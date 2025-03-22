@@ -53,22 +53,7 @@ public class BallWalk : MonoBehaviour
 
         ball.AddForce(velocityChange, ForceMode.VelocityChange);
         animator.SetFloat("Velocity", ball.velocity.magnitude);
-            // moveDirection = new Vector3(horiz, 0, vert);
-            // moveDirection = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * moveDirection;
-            // if (vert > 0.0f)
-            // {
-            //     ball.AddForce(moveDirection * _speed);
-            // }
-            // else if (vert < 0f)
-            // {
-            //     ball.AddForce(moveDirection * _speed);
-            // }
-            // else
-            // {
-            //     moveDirection = Vector3.zero;
-            // }
-
-            // animator.SetFloat("Velocity", Vector3.ClampMagnitude(moveDirection, 1).magnitude);
+        
     }
 
     public void LimitSpeed()
