@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MazeGenerateCell
@@ -13,8 +12,8 @@ public bool Visited = false;
 
 public class MazeGenerator
 {
-    public int _width = 11;
-    public int _height = 11;
+    public int _width = Random.Range(11,21), _height = Random.Range(11,21);
+
 
     public MazeGenerateCell[,] GenerateMaze()
     {

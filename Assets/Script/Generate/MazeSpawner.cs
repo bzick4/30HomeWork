@@ -1,9 +1,21 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 public class MazeSpawner : MonoBehaviour
 {
+    [Header("Prefabs")]
     [SerializeField] private GameObject _CellPrefab;
-    public Vector3 CellSize = new Vector3(1,1,0);
+    [SerializeField] private GameObject _CoinPrefab;
+    [SerializeField] private GameObject _Finish;
+
+    [Header("% Generation")]
+    [SerializeField, Range(0.1f, 0.25f)] private float _SpawnCoinChance;
+
+    [Header("Position")]
+    [SerializeField] private Vector3 CellSize = new Vector3();
+
+    private GameObject _finishSpawn;
+
+
 
     private void Start() 
     {
@@ -20,7 +32,24 @@ public class MazeSpawner : MonoBehaviour
               c._WallLeft.SetActive(maze[x, y].WallLeft);
               c._WallDown.SetActive(maze[x, y].WallDown);
               c._Plane.SetActive(maze[x, y].Plane);
+
+              if (maze[x, y].Plane && Random.value < _SpawnCoinChance)
+              {
+                Instantiate(_CoinPrefab, new Vector3(x * CellSize.x, 1f, y *  CellSize.z), Quaternion.identity);
+              }
+
+             
+        
             }
         }
+
+        Vector3 spawnFinish = new Vector3 (_generator._height, 1, _generator._width);
+             Instantiate(_Finish, spawnFinish, Quaternion.identity);
     }
+
+
+
+
+
+
 }
