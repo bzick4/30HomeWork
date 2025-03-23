@@ -75,17 +75,10 @@ public class BallWalk : MonoBehaviour
 
         if (other.CompareTag("Finish"))
         {
-            if (_coinManager.totalCoin >= 6)
-            {
-                Invoke("ActivePanelWin",1f);
-                _particleWin.SetActive(true);
-                Invoke("Pause",1f);
-            }
-            else
-            {
-                _panelChek.SetActive(true);
-                Pause();
-            }
+            Invoke("ActivePanelWin",1f);
+            _particleWin.SetActive(true);
+            Invoke("Pause",1f);
+
         }
     }
 

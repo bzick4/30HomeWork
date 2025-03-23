@@ -1,8 +1,5 @@
 using System;
-using TMPro;
 using UnityEngine;
-
-
 
 public class CoinScript : MonoBehaviour
 {
@@ -11,7 +8,7 @@ public class CoinScript : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.TryGetComponent<BallWalk>(out var ballWalk)) return;
+        if (other.CompareTag("Ball"))
         {
             OnGiveCoin?.Invoke();
             DestroyEffect();

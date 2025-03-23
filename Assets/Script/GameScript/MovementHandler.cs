@@ -7,9 +7,11 @@ public class MovementHandler : MonoBehaviour
 
     [SerializeField] private MoveBall _moveBall;
     [SerializeField] private float _BallSpeed;
+
+    private Rigidbody rb = new Rigidbody();
    void Start()
     {
-    
+      rb = GetComponent<Rigidbody>();
       if(_moveBall== null)
       Debug.Log("Input Ne naiden");  
     }
@@ -18,6 +20,7 @@ public class MovementHandler : MonoBehaviour
     {
         if(_moveBall.IsThereTouch())
         {
+            
         Vector2 _currDelPos = _moveBall.GetTouchDelta();
         _currDelPos = _currDelPos * _BallSpeed;
         Vector3 _newGravityVector = new Vector3(_currDelPos.x, Physics.gravity.y, _currDelPos.y);
@@ -28,6 +31,6 @@ public class MovementHandler : MonoBehaviour
 
     void Update()
     {
-        MoveBall();
+    MoveBall();
     }
 }

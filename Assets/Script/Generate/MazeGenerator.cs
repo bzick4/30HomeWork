@@ -12,13 +12,14 @@ public bool Visited = false;
 
 public class MazeGenerator
 {
-    public int _width = Random.Range(11,21), _height = Random.Range(11,21);
+    public int _widthX{get;set;} = Random.Range(11,21); 
+    public int _heightZ{get; set;} = Random.Range(11,21);
 
 
     public MazeGenerateCell[,] GenerateMaze()
     {
 
-        MazeGenerateCell[,] maze = new MazeGenerateCell[_width, _height];
+        MazeGenerateCell[,] maze = new MazeGenerateCell[_widthX, _heightZ];
 
         for (int x = 0; x < maze.GetLength(0); x++)
         {
@@ -30,19 +31,21 @@ public class MazeGenerator
 
         for (int x = 0; x < maze.GetLength(0); x ++)
         {
-            maze [x, _height - 1].WallLeft = false;
-            maze [x, _height - 1].Plane = false;
+            maze [x, _heightZ - 1].WallLeft = false;
+            maze [x, _heightZ - 1].Plane = false;
         }
 
         for (int y = 0; y < maze.GetLength(1); y ++)
         {
-            maze [_width - 1, y].WallDown = false;
-            maze [_width - 1, y].Plane = false;
+            maze [_widthX - 1, y].WallDown = false;
+            maze [_widthX - 1, y].Plane = false;
         }
 
         RemoveWallsWithBacktracker(maze);
 
         return maze;
+
+        
     }
 
     private void RemoveWallsWithBacktracker(MazeGenerateCell[,] maze)
@@ -61,8 +64,8 @@ public class MazeGenerator
             if (x > 0 && !maze[x - 1, y].Visited) unvisit.Add(maze[x - 1, y]);
             if (y > 0 && !maze[x, y - 1].Visited) unvisit.Add(maze[x, y - 1]);
 
-            if (x < _width - 2 && !maze[x + 1, y].Visited) unvisit.Add(maze[x + 1, y]);
-            if (y < _height - 2 && !maze[x, y + 1].Visited) unvisit.Add(maze[x, y + 1]);
+            if (x < _widthX - 2 && !maze[x + 1, y].Visited) unvisit.Add(maze[x + 1, y]);
+            if (y < _heightZ - 2 && !maze[x, y + 1].Visited) unvisit.Add(maze[x, y + 1]);
 
             if (unvisit.Count > 0)
             {
