@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 262109545580488981}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.3750001, y: 0.677, z: -0.00000023841858}
-  m_LocalScale: {x: 3, y: 1, z: 0.25}
+  m_LocalPosition: {x: -1.3750001, y: 0.77699995, z: -0.00000023841858}
+  m_LocalScale: {x: 3, y: 1.8, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9097587851368539971}
@@ -133,8 +133,8 @@ Transform:
   m_GameObject: {fileID: 4761251181739287585}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.677, z: -1.375}
-  m_LocalScale: {x: 3, y: 1, z: 0.25}
+  m_LocalPosition: {x: 0, y: 0.77699995, z: -1.375}
+  m_LocalScale: {x: 3, y: 1.8, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9097587851368539971}
@@ -384,10 +384,12 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f9d799d176a7548ee93d66279b84cc3e, type: 2}
   - {fileID: 2100000, guid: 71c95755f49f3482bb951dbe449358fc, type: 2}
   - {fileID: 2100000, guid: 94a6d60753e404905b7fc01d8853fbfb, type: 2}
+  - {fileID: 2100000, guid: c238007525be24cc381eceb35bd45da8, type: 2}
   _WallMaterials:
   - {fileID: 2100000, guid: d2ee5c35f738843d4be9a3425f26bf07, type: 2}
   - {fileID: 2100000, guid: 5f73475cf0cad364b9800b85c2a229fc, type: 2}
   - {fileID: 2100000, guid: 4871af5cc25ca42afb644ecc7183b0ab, type: 2}
+  - {fileID: 2100000, guid: b703d57f20abd4361bdcf1ffd7f2312f, type: 2}
 --- !u!64 &8660265804428005670
 MeshCollider:
   m_ObjectHideFlags: 0
