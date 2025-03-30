@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WalkBall : MonoBehaviour
 {
-  private Vector2 startTouchPosition, endTouchPosition;
+    private Vector2 startTouchPosition, endTouchPosition;
     private Rigidbody _ball;
 
     private float moveForce = 7; 
@@ -12,6 +12,7 @@ public class WalkBall : MonoBehaviour
     void Start()
     {
         _ball = GetComponent<Rigidbody>();
+        _ball.useGravity = true;
     }
 
     void Update()

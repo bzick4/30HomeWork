@@ -1,34 +1,56 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Networking;
+using System.Collections.Generic;
 
 public class Audio : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private AudioSource audioSource;
+    private List<AudioClip> songs = new List<AudioClip>();
+    private int currentSongIndex = -1;
 
-
-   public AudioSource audioSource; // Аудиоисточник
-    private string audioUrl = " https://drive.google.com/uc?export=download&id=1g3KBj4jWVEbr6TGMHGIY16ZkZP1T9tSr"; // Сюда вставь ссылку на аудиофайл
-
-    void Start()
+    private void Start()
     {
-        StartCoroutine(DownloadAudio(audioUrl));
+        AudioClip[] loadedSongs = Resources.LoadAll<AudioClip>("Audio");
+        
+        if (loadedSongs.Length == 0)
+        {
+            Debug.LogError("No songs found in Resources/Audio!");
+            return;
+        }
+
+        songs.AddRange(loadedSongs);
+        PlayRandomSong();
     }
 
-    IEnumerator DownloadAudio(string url)
+    private void PlayRandomSong()
     {
-        UnityWebRequest request = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG);
-        yield return request.SendWebRequest();
+        if (songs.Count == 0) return;
 
-        if (request.result == UnityWebRequest.Result.Success)
-        {
-            AudioClip clip = DownloadHandlerAudioClip.GetContent(request);
-            audioSource.clip = clip;
-            audioSource.Play();
-        }
-        else
-        {
-            Debug.LogError("Ошибка загрузки аудиофайла: " + request.error);
-        }
+        int newIndex;
+        do {
+            newIndex = Random.Range(0, songs.Count);
+        } while (newIndex == currentSongIndex && songs.Count > 1);
+
+        currentSongIndex = newIndex;
+        audioSource.clip = songs[currentSongIndex];
+        audioSource.Play();
+
+        StartCoroutine(WaitForSongEnd());
     }
+
+    private IEnumerator WaitForSongEnd()
+    {
+        yield return new WaitWhile(() => audioSource.isPlaying);
+        PlayRandomSong();
+    }
+
+    public void NextSong()
+    {
+        if (audioSource.isPlaying) audioSource.Stop();
+        PlayRandomSong();
+    }
+
+
+
 }
+

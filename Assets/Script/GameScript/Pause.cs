@@ -1,23 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
-    private MaterialGenerator _materialGenerator;
+    [SerializeField] private WalkBall _WalkBall;
+    [SerializeField] private MazeSpawner _MazeSpawner;
+    [SerializeField] private AudioListener _Audio;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        _materialGenerator= GetComponentInChildren<MaterialGenerator>();
-        _materialGenerator.enabled = false;
+        ScriptOff();
     }
 
-    // Update is called once per frame
-    public void MaterialGeneratorOn()
+    public void ScriptOn()
     {
-        _materialGenerator.enabled = true;
+        _WalkBall.enabled = true;
+        _MazeSpawner.enabled = true;
+        _Audio.enabled =true;
     }
 
+    public void ScriptOff()
+    {
+        _WalkBall.enabled = false;
+        _MazeSpawner.enabled = false;
+        _Audio.enabled = false;
+    }
 }

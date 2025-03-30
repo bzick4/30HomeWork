@@ -7,15 +7,11 @@ using UnityEngine.UIElements;
 
 public class Manager : MonoBehaviour
 {
-    [SerializeField] private PauseScript _pauseScript;
+    [SerializeField] private Pause _Pause;
     [SerializeField] private GameObject _panelWin;
     [SerializeField] private GameObject _particleWin;
     
-    private void Start()
-    {
-        _pauseScript.PausedGame();
-    }
-
+    
     private void OnTriggerEnter(Collider other)
     {
     
@@ -29,9 +25,8 @@ public class Manager : MonoBehaviour
 
     private void Pause()
     {
-        _pauseScript.PausedGame();
+        _Pause.ScriptOff();
     }
-
     private void ActivePanelWin()
     {
         _panelWin.SetActive(true);
