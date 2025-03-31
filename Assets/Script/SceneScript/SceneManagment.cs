@@ -25,5 +25,8 @@ public class SceneManagment : MonoBehaviour
     public void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        
+        if(SceneManager.GetActiveScene().buildIndex==6)
+        SceneManager.LoadScene(0);
     }
 }
