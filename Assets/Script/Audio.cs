@@ -46,7 +46,8 @@ public class Audio : MonoBehaviour
 
     public void NextSong()
     {
-        if (audioSource.isPlaying) audioSource.Stop();
+        if (audioSource.isPlaying)
+            audioSource.Stop();
         PlayRandomSong();
     }
 
